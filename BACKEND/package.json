@@ -17,6 +17,7 @@
     "bcryptjs": "^3.0.3",
     "chromadb": "^3.2.2",
     "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
     "google-auth-library": "^10.5.0",
     "morgan": "^1.10.1",
     "multer": "^2.0.2",
