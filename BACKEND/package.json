@@ -14,16 +14,23 @@
     "@chroma-core/default-embed": "^0.1.9",
     "@google/generative-ai": "^0.24.1",
     "@huggingface/inference": "^4.13.9",
+    "axios": "^1.13.2",
     "bcryptjs": "^3.0.3",
     "chromadb": "^3.2.2",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "google-auth-library": "^10.5.0",
+    "jsonwebtoken": "^9.0.3",
+    "langchain": "^1.2.10",
+    "mongoose": "^9.1.4",
     "morgan": "^1.10.1",
     "multer": "^2.0.2",
     "nodemailer": "^7.0.12",
+    "openai": "^6.16.0",
+    "pdf-parse": "^2.4.5",
     "redis": "^5.10.0",
-    "socket.io": "^4.8.3"
+    "socket.io": "^4.8.3",
+    "uuid": "^13.0.0"
   }
 }
