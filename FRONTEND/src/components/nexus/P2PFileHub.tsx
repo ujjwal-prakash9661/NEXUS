@@ -95,7 +95,7 @@ export function P2PFileHub() {
           <div className="space-y-4">
             <div>
               <label className="text-xs text-muted-foreground uppercase font-medium mb-1.5 block">Target Nexus ID</label>
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <Input
                   key="nexus-id-input"
                   placeholder="e.g. NEX-816269"
@@ -103,8 +103,9 @@ export function P2PFileHub() {
                   onChange={(e) => setTargetNexusId(e.target.value)}
                   className="bg-black/20 border-primary/20 font-mono text-sm"
                 />
-                <Button onClick={handleLookup} disabled={isSearching} variant="secondary" size="icon">
+                <Button onClick={handleLookup} disabled={isSearching} variant="secondary" className="sm:w-auto w-full">
                   {isSearching ? <Loader2 className="w-4 h-4 animate-spin" /> : <Search className="w-4 h-4" />}
+                  <span className="sm:hidden ml-2">Search User</span>
                 </Button>
               </div>
             </div>
@@ -112,12 +113,12 @@ export function P2PFileHub() {
             {targetUser && (
               <div className="p-4 rounded-xl bg-primary/5 border border-primary/20 animate-in fade-in">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center text-sm font-bold text-white">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center text-sm font-bold text-white shrink-0">
                     {targetUser.name?.[0] || "?"}
                   </div>
-                  <div>
-                    <p className="text-sm font-medium font-display">{targetUser.name}</p>
-                    <p className="text-xs text-muted-foreground font-mono">{targetUser.nexusId}</p>
+                  <div className="min-w-0">
+                    <p className="text-sm font-medium font-display truncate">{targetUser.name}</p>
+                    <p className="text-xs text-muted-foreground font-mono truncate">{targetUser.nexusId}</p>
                   </div>
                 </div>
                 <Button onClick={handleConnect} className="w-full gap-2">
@@ -139,7 +140,7 @@ export function P2PFileHub() {
                   type="file"
                   multiple
                   onChange={handleFileSelect}
-                  className="text-xs cursor-pointer file:bg-primary/10 file:text-primary file:border-0 file:rounded-md file:px-2 file:py-1 file:mr-2"
+                  className="text-xs cursor-pointer file:bg-primary/10 file:text-primary file:border-0 file:rounded-md file:px-2 file:py-1 file:mr-2 w-full"
                 />
                 <Button onClick={handleSend} disabled={!selectedFiles || selectedFiles.length === 0 || fileProgress > 0} className="w-full gap-2" size="sm">
                   <Send className="w-3 h-3" /> Transmit {selectedFiles?.length || 0} File(s)

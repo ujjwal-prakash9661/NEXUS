@@ -20,13 +20,7 @@ const Index = () => {
 
       <div className="fixed bottom-4 right-4 z-50 pointer-events-none flex flex-col items-end gap-2">
         {/* Admin Link - Responsive & Conditional */}
-        {isBackendConnected === null ? (
-          <Badge variant="outline" className="bg-background/80 backdrop-blur">Checking Backend...</Badge>
-        ) : isBackendConnected ? (
-          <Badge variant="default" className="bg-green-500 hover:bg-green-600">Backend Connected</Badge>
-        ) : (
-          <Badge variant="destructive">Backend Disconnected</Badge>
-        )}
+        
       </div>
       <NexusDashboard />
     </div>

@@ -254,16 +254,16 @@ export function AdminDashboard() {
   });
 
   return (
-    <div className="space-y-6 max-w-full mx-auto pb-6 h-full flex flex-col">
+    <div className="space-y-6 max-w-full mx-auto pb-6 h-auto min-h-full flex flex-col">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-2xl font-bold text-foreground flex items-center gap-3">
-            <Shield className="w-7 h-7 text-primary" />
-            Admin Command Center
+          <h1 className="font-display text-xl md:text-2xl font-bold text-foreground flex items-center gap-2 md:gap-3">
+            <Shield className="w-6 h-6 md:w-7 md:h-7 text-primary" />
+            Admin Center
           </h1>
-          <p className="text-sm text-muted-foreground mt-1">
-            Real-time system overview and user management
+          <p className="text-xs md:text-sm text-muted-foreground mt-1">
+            System overview & users
           </p>
         </div>
         <Button
@@ -328,24 +328,36 @@ export function AdminDashboard() {
       </div>
 
       {/* Main Content Tabs (Replacing Quick Actions) */}
-      <div className="glass-panel rounded-2xl border border-primary/10 p-6">
+      <div className="glass-panel rounded-2xl border border-primary/10 p-2 md:p-6">
         <Tabs defaultValue="pending" className="w-full">
-          <TabsList className="bg-primary/5 p-1 border border-primary/10 w-full justify-start overflow-x-auto">
-            <TabsTrigger value="pending" className="data-[state=active]:bg-primary/20 data-[state=active]:text-primary">Pending Approvals</TabsTrigger>
-            <TabsTrigger value="users" className="data-[state=active]:bg-primary/20 data-[state=active]:text-primary">User Management</TabsTrigger>
-            <TabsTrigger value="activity" className="data-[state=active]:bg-primary/20 data-[state=active]:text-primary">Audit Logs</TabsTrigger>
-            <TabsTrigger value="tasks" className="data-[state=active]:bg-primary/20 data-[state=active]:text-primary">Assign Tasks</TabsTrigger>
+          <TabsList className="bg-primary/5 p-1 border border-primary/10 w-full grid grid-cols-4 mb-2 h-auto">
+            <TabsTrigger value="pending" className="data-[state=active]:bg-primary/20 data-[state=active]:text-primary text-[10px] md:text-sm px-1 py-1.5 h-full whitespace-normal leading-tight">
+              <span className="md:hidden">Pending</span>
+              <span className="hidden md:inline">Pending Approvals</span>
+            </TabsTrigger>
+            <TabsTrigger value="users" className="data-[state=active]:bg-primary/20 data-[state=active]:text-primary text-[10px] md:text-sm px-1 py-1.5 h-full whitespace-normal leading-tight">
+              <span className="md:hidden">Users</span>
+              <span className="hidden md:inline">User Management</span>
+            </TabsTrigger>
+            <TabsTrigger value="activity" className="data-[state=active]:bg-primary/20 data-[state=active]:text-primary text-[10px] md:text-sm px-1 py-1.5 h-full whitespace-normal leading-tight">
+              <span className="md:hidden">Audit</span>
+              <span className="hidden md:inline">Audit Logs</span>
+            </TabsTrigger>
+            <TabsTrigger value="tasks" className="data-[state=active]:bg-primary/20 data-[state=active]:text-primary text-[10px] md:text-sm px-1 py-1.5 h-full whitespace-normal leading-tight">
+              <span className="md:hidden">Tasks</span>
+              <span className="hidden md:inline">Assign Tasks</span>
+            </TabsTrigger>
           </TabsList>
 
           {/* Tasks Tab */}
-          <TabsContent value="tasks" className="mt-6">
+          <TabsContent value="tasks" className="mt-4">
             <TaskAssignmentForm token={token} />
           </TabsContent>
 
           {/* Pending Users Tab */}
-          <TabsContent value="pending" className="mt-6 space-y-4">
+          <TabsContent value="pending" className="mt-4 space-y-4">
             {pendingUsers?.length === 0 ? (
-              <div className="p-10 text-center text-muted-foreground bg-primary/5 rounded-lg border border-primary/10 border-dashed">
+              <div className="p-4 md:p-10 text-center text-muted-foreground bg-primary/5 rounded-lg border border-primary/10 border-dashed text-xs md:text-sm">
                 No pending user requests
               </div>
             ) : (
@@ -377,7 +389,7 @@ export function AdminDashboard() {
 
           {/* All Users Tab */}
           <TabsContent value="users" className="mt-6">
-            <div className="grid gap-4 h-[calc(100vh-320px)] overflow-y-auto scrollbar-nexus pr-2">
+            <div className="grid gap-4 h-auto lg:h-[calc(100vh-320px)] overflow-y-auto scrollbar-nexus pr-2">
               {allUsers?.map((user: any) => (
                 <div key={user._id} className="bg-background/40 border border-primary/10 p-4 flex flex-col md:flex-row items-center justify-between rounded-xl gap-4">
                   <div className="flex items-center gap-4 w-full">
@@ -423,7 +435,7 @@ export function AdminDashboard() {
 
           {/* Activity Tab */}
           <TabsContent value="activity">
-            <div className="bg-background/30 rounded-lg border border-primary/10 overflow-hidden h-[calc(100vh-320px)] overflow-y-auto scrollbar-nexus">
+            <div className="bg-background/30 rounded-lg border border-primary/10 overflow-hidden h-auto lg:h-[calc(100vh-320px)] overflow-y-auto scrollbar-nexus">
               {activity?.map((log: any, i: number) => (
                 <div key={i} className="p-4 border-b border-primary/5 flex items-center justify-between hover:bg-primary/5 transition-colors">
                   <div className="flex items-center gap-3">

@@ -142,7 +142,7 @@ export function AIAssistant() {
       <button
         onClick={() => setIsOpen(true)}
         className={cn(
-          "fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full",
+          "fixed bottom-6 right-6 z-50 w-12 h-12 md:w-16 md:h-16 rounded-full",
           "bg-cyan-500 hover:bg-cyan-400 border border-cyan-300",
           "flex items-center justify-center group",
           "shadow-[0_0_20px_rgba(6,182,212,0.6)]",
@@ -152,7 +152,7 @@ export function AIAssistant() {
         )}
       >
         <div className="absolute inset-0 rounded-full bg-white/20 group-hover:bg-white/30 transition-colors" />
-        <Brain className="w-8 h-8 text-black animate-pulse" />
+        <Brain className="w-6 h-6 md:w-8 md:h-8 text-black animate-pulse" />
       </button>
 
       {/* Main Container */}

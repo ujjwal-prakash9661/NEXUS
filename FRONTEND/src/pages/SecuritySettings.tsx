@@ -107,15 +107,15 @@ const SecuritySettings = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#0a0f1c] text-white p-6 md:p-12">
+        <div className="min-h-screen bg-[#0a0f1c] text-white p-4 md:p-12">
             <div className="max-w-4xl mx-auto">
-                <div className="flex items-center justify-between mb-8">
-                    <h1 className="text-3xl font-bold flex items-center gap-3">
-                        <Shield className="text-emerald-500 w-8 h-8" />
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 md:mb-8 gap-4">
+                    <h1 className="text-2xl md:text-3xl font-bold flex items-center gap-3">
+                        <Shield className="text-emerald-500 w-6 h-6 md:w-8 md:h-8" />
                         Security Settings
                     </h1>
-                    <Link to="/">
-                        <Button variant="outline">Back to Dashboard</Button>
+                    <Link to="/" className="w-full sm:w-auto">
+                        <Button variant="outline" className="w-full sm:w-auto">Back to Dashboard</Button>
                     </Link>
                 </div>
 
@@ -133,16 +133,16 @@ const SecuritySettings = () => {
                                 className="scale-90"
                             />
 
-                            <div className="flex gap-4 w-full">
+                            <div className="flex flex-col sm:flex-row gap-4 w-full">
                                 <Button
-                                    className="flex-1 bg-emerald-600 hover:bg-emerald-700"
+                                    className="flex-1 bg-emerald-600 hover:bg-emerald-700 w-full"
                                     onClick={() => handleAction("enroll")}
                                     disabled={isScanning}
                                 >
                                     <Camera className="w-4 h-4 mr-2" /> Enroll/Update Face
                                 </Button>
                                 <Button
-                                    className="flex-1 bg-blue-600 hover:bg-blue-700"
+                                    className="flex-1 bg-blue-600 hover:bg-blue-700 w-full"
                                     onClick={() => handleAction("verify")}
                                     disabled={isScanning}
                                 >

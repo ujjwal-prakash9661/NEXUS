@@ -85,7 +85,8 @@ export function TaskModule() {
         </div>
 
         <div className="flex-1 overflow-auto scrollbar-nexus">
-          <table className="w-full text-left border-collapse">
+          {/* Desktop Table View */}
+          <table className="hidden md:table w-full text-left border-collapse">
             <thead className="bg-white/5 text-xs text-muted-foreground uppercase tracking-wider sticky top-0 backdrop-blur-md z-10">
               <tr>
                 <th className="p-3 rounded-tl-lg">Directive</th>
@@ -132,6 +133,52 @@ export function TaskModule() {
               ))}
             </tbody>
           </table>
+
+          {/* Mobile Card View */}
+          <div className="md:hidden space-y-3">
+            {tasks.map((task: Task) => (
+              <div key={task._id} className="p-4 rounded-lg bg-white/5 border border-white/10 space-y-3">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <h4 className="font-medium text-sm text-foreground">{task.title}</h4>
+                    <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{task.description}</p>
+                  </div>
+                  <Badge variant="outline" className={cn(
+                    "text-[10px] h-5 shrink-0",
+                    task.status === 'completed' ? "text-nexus-green border-nexus-green/30" :
+                      task.status === 'in-progress' ? "text-blue-400 border-blue-400/30" : "text-zinc-500"
+                  )}>
+                    {task.status.toUpperCase()}
+                  </Badge>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 text-xs">
+                  <div className="bg-black/20 p-2 rounded">
+                    <span className="text-muted-foreground block mb-0.5">Assignee</span>
+                    <span className="text-primary font-mono">{task.assignedTo?.nexusId || "Unassigned"}</span>
+                  </div>
+                  <div className="bg-black/20 p-2 rounded">
+                    <span className="text-muted-foreground block mb-0.5">Due</span>
+                    <span className="font-mono">{new Date(task.dueDate).toLocaleDateString()}</span>
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <div className="flex justify-between text-xs text-muted-foreground">
+                    <span>Progress</span>
+                    <span>{task.progress}%</span>
+                  </div>
+                  <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                    <div
+                      className={cn("h-full rounded-full transition-all", task.status === 'completed' ? 'bg-nexus-green' : 'bg-primary')}
+                      style={{ width: `${task.progress}%` }}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
           {tasks.length === 0 && (
             <div className="text-center py-10 text-muted-foreground text-sm">
               No directives found in the registry.

@@ -38,17 +38,17 @@ export function NexusDashboard() {
         return isAdmin ? <AdminDashboard /> : null;
       case "security":
         return (
-          <div className="grid grid-cols-1 lg:grid-cols-12 grid-rows-1 lg:grid-rows-2 gap-3 md:gap-4 h-[calc(100vh-100px)] max-w-full mx-auto pb-2">
-            <div className="lg:col-span-7 xl:col-span-8 row-span-1 min-h-0">
+          <div className="grid grid-cols-1 lg:grid-cols-12 grid-rows-1 lg:grid-rows-2 gap-3 md:gap-4 h-auto lg:h-[calc(100vh-100px)] max-w-full mx-auto pb-2">
+            <div className="lg:col-span-7 xl:col-span-8 row-span-1 min-h-[300px] lg:min-h-0">
               <SecurityMonitor />
             </div>
-            <div className="lg:col-span-5 xl:col-span-4 row-span-1 min-h-0">
+            <div className="lg:col-span-5 xl:col-span-4 row-span-1 min-h-[300px] lg:min-h-0">
               <ActivityLog />
             </div>
-            <div className="lg:col-span-6 row-span-1 min-h-0">
+            <div className="lg:col-span-6 row-span-1 min-h-[300px] lg:min-h-0">
               <TaskModule />
             </div>
-            <div className="lg:col-span-6 row-span-1 min-h-0">
+            <div className="lg:col-span-6 row-span-1 min-h-[300px] lg:min-h-0">
               <P2PFileHub />
             </div>
           </div>
@@ -57,23 +57,23 @@ export function NexusDashboard() {
         return <Messages />;
       case "vault":
         return (
-          <div className="max-w-full mx-auto h-[calc(100vh-140px)]">
+          <div className="max-w-full mx-auto h-auto lg:h-[calc(100vh-140px)]">
             <P2PFileHub />
           </div>
         );
       case "ai":
         return (
-          <div className="max-w-7xl mx-auto h-[calc(100vh-140px)]">
+          <div className="max-w-7xl mx-auto h-auto lg:h-[calc(100vh-140px)]">
             <NexusCommandCenter />
           </div>
         );
       case "tasks":
         return (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 max-w-full mx-auto h-[calc(100vh-140px)] pb-2">
-            <div className="min-h-0 h-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 max-w-full mx-auto h-auto lg:h-[calc(100vh-140px)] pb-2">
+            <div className="min-h-[400px] lg:min-h-0 h-full">
               <TaskModule />
             </div>
-            <div className="min-h-0 h-full">
+            <div className="min-h-[400px] lg:min-h-0 h-full">
               <ActivityLog />
             </div>
           </div>
@@ -96,12 +96,12 @@ export function NexusDashboard() {
         <NexusSidebar activeTab={activeTab} onTabChange={setActiveTab} />
 
         {/* Main Content */}
-        <div className="flex-1 flex flex-col min-h-screen">
+        <div className="flex-1 flex flex-col min-h-screen overflow-x-hidden">
           {/* Header */}
           <IdentityHeader onLockToggle={() => setIsLocked(!isLocked)} isLocked={isLocked} />
 
           {/* Dashboard Content */}
-          <main className="flex-1 p-3 md:p-6 pb-24 md:pb-6 overflow-y-auto scrollbar-nexus">
+          <main className="flex-1 p-3 md:p-6 pb-24 md:pb-6 overflow-y-auto scrollbar-nexus overflow-x-hidden">
             {renderContent()}
           </main>
         </div>
